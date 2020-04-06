@@ -1,0 +1,24 @@
+{
+  "name": "auto-card-generator",
+  "version": "1.0.0",
+  "description": "This is a small project to quickly generate cards based on a database of card-data.",
+  "main": "main.js",
+  "scripts": {
+    "test": "\"echo 1\"\u001b[D"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "utility"
+  ],
+  "author": "Paul Erpenstein",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "html2canvas": "^1.0.0-rc.5",
+    "mustache": "^4.0.1",
+    "requirejs": "^2.3.6"
+  }
+}
