@@ -44,16 +44,20 @@ require(['html2canvas', 'jquery'], function(html2canvas, $) {
   function printCards(event) {
     var cards = $(".card");
     for(k in cards) {
-      html2canvas(cards[k]).then(function(canvas) {
-        var url = canvas.toDataURL("image/png");
-        var link = document.createElement('a');
-        link.href = url;
-        link.download = 'Download.png';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      });
+      html2canvas(cards[k]).then(handlePrintedCanvas.bind(null, cards[k]));
       return;
     }
   }
 });
+
+function handlePrintedCanvas(card, canvas) {
+  var url = canvas.toDataURL("image/png");
+  var link = document.createElement('a');
+  link.href = url;
+  var card_name = $(card).find(".title").text();
+  var number = $(card).data("num");
+  link.download =  card_name + "-" + number + '.png';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}

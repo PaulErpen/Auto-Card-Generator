@@ -58,7 +58,8 @@ function convertToTemplateData(workbook) {
                 }
             }
             for(l = 0; l < card["quantity"]; l++){
-                cards.push(card);
+                card["num"] = l + 1;
+                cards.push(JSON.parse(JSON.stringify(card)));
             }
         }
     }
