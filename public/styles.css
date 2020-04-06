@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3.3em;
+}
+
+#preview .card {
+    background-image: url("img/sbs-text-rahmen.jpg");
+    width: 1000px;
+    height: 1000px;
+    background-size: contain;
+    margin: 5px;
+    overflow: auto;
+}
+
+.card .card-inner {
+    margin: 10% 10%;
+    position: relative;
+    height: 80%;
+}
+
+.card .title {
+    margin-bottom: 18px;
+}
+
+.card .description {
+    margin-bottom: 5px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.effect {
+    position: absolute;
+    bottom: 0px;
+    transform: translateY(+50%);
+}
