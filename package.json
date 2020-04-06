@@ -18,6 +18,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "html2canvas": "^1.0.0-rc.5",
+    "jquery": "^3.4.1",
+    "js-xlsx": "^0.8.22",
     "mustache": "^4.0.1",
     "requirejs": "^2.3.6"
   }

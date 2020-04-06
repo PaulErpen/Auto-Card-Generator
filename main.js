@@ -10,4 +10,8 @@ app.use(express.static('public'))
 
 app.get('/', (req, res) => res.send(Mustache.render(fs.readFileSync("templates/main.mustache").toString('utf8'), {})))
 
+app.post('/excel', function(req, res) {
+    var workbook = xlsx.read(binary, {type : "binary"});
+});
+
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
