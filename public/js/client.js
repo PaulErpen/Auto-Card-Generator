@@ -45,9 +45,8 @@ require(['html2canvas', 'jquery'], function(html2canvas, $) {
 
   function printCards(event) {
     var cards = $(".card");
-    for(k in cards) {
+    for(k = 0; k < cards.length; k++) {
       html2canvas(cards[k]).then(handlePrintedCanvas.bind(null, cards[k]));
-      return;
     }
   }
 });
