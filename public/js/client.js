@@ -31,14 +31,16 @@ require(['html2canvas', 'jquery'], function(html2canvas, $) {
 
   function handleResponse(data) {
     $("#preview").html(data);
-    var effect_fields = $(".card .effect");
+    var inner_cards = $(".card .card-inner");
     var max_height = 0;
-    for(k in effect_fields) {
-      if(effect_fields[k].offsetHeight > max_height) {
-        max_height = effect_fields[k].offsetHeight
-      }
+    var card_height = inner_cards[0].offsetHeight;
+    for(k = 0; k < inner_cards.length; k++) {
+        var offset_height = 60;
+        offset_height += $(inner_cards[k]).find(".title")[0].offsetHeight;
+        offset_height += $(inner_cards[k]).find(".description")[0].offsetHeight;
+
+        $(inner_cards[k]).find(".effect-wrapper").css("height", card_height - offset_height + "px");
     }
-    $(".card .effect").css("bottom", max_height / 2 + "px");
   }
 
   function printCards(event) {
@@ -54,7 +56,7 @@ function handlePrintedCanvas(card, canvas) {
   var url = canvas.toDataURL("image/png");
   var link = document.createElement('a');
   link.href = url;
-  var card_name = $(card).find(".title").text();
+  var card_name = $(card).find(".title").text().trim();
   var number = $(card).data("num");
   link.download =  card_name + "-" + number + '.png';
   document.body.appendChild(link);
