@@ -6,6 +6,7 @@ const multiparty = require('multiparty');
 const express = require('express')
 const app = express()
 const port = 3000
+const row_indieces = ["A", "B", "C", "D"];
 
 //use a body parser
 app.use(bodyParser.json());
@@ -31,8 +32,6 @@ app.post('/excel', function(req, res) {
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
 
 function convertToTemplateData(workbook) {
-    var row_indieces = ["A", "B", "C", "D"];
-
     var cards = []
     for(k in workbook["SheetNames"]) {
         var current_sheet = workbook["Sheets"][workbook["SheetNames"][k]];
@@ -69,7 +68,7 @@ function convertToTemplateData(workbook) {
 function get_word_count(current_sheet, row_indieces) {
     var i = 0;
     for(k in current_sheet) {
-        if(k[0] != "!") {
+        if(row_indieces.includes(k[0])) {
             i++;
         }
     }
