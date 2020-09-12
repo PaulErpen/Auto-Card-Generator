@@ -35,12 +35,12 @@ function convertToTemplateData(workbook) {
     var cards = []
     for(k in workbook["SheetNames"]) {
         var current_sheet = workbook["Sheets"][workbook["SheetNames"][k]];
-        var count_cards = get_word_count(current_sheet, row_indieces)
 
-        for(i = 2; i <= count_cards; i++) {
+        loop1: for(i = 2; ; i++) {
             var card = {};
             for(j = 0; j < row_indieces.length; j++) {
                 var value = current_sheet["" + row_indieces[j] + i]
+                if(!value) break loop1;
                 switch (j) {
                     case 0:
                         card["title"] = value.w;
@@ -63,14 +63,4 @@ function convertToTemplateData(workbook) {
         }
     }
     return cards;
-}
-
-function get_word_count(current_sheet, row_indieces) {
-    var i = 0;
-    for(k in current_sheet) {
-        if(row_indieces.includes(k[0])) {
-            i++;
-        }
-    }
-    return i / row_indieces.length;
 }
